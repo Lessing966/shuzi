@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dmdao.DmDao" >
+
+    <select id="queryForMap" resultType="string" parameterType="string">
+        insert into HY.TEST (TNAME,TDATE) values (#{name},#{date})
+    </select>
+
+
+    <insert id="insertDmdata" parameterType="com.example.demo.entity.DateEntity">
+        insert into DIGITAL_SENTRY(
+        <if test="entity.JH_OPER_TYPE != null and entity.JH_OPER_TYPE != ''">JH_OPER_TYPE,</if>
+        <if test="entity.JH_OPER_TIME != null">JH_OPER_TIME,</if>
+        <if test="entity.pId != null and entity.pId != ''">P_ID,</if>
+        <if test="entity.serialNo != null">SERIAL_NO,</if>
+        <if test="entity.account != null and entity.account != ''">ACCOUNT,</if>
+        <if test="entity.sceneAccount != null and entity.sceneAccount != ''">SCENE_ACCOUNT,</if>
+        <if test="entity.deviceId != null and entity.deviceId != ''">DEVICE_ID,</if>
+        <if test="entity.checkTime != null and entity.checkTime != ''">CHECK_TIME,</if>
+        <if test="entity.name != null and entity.name != ''">NAME,</if>
+        <if test="entity.idNumber != null and entity.idNumber != ''">ID_NUMBER,</if>
+        <if test="entity.ssmCode != null and entity.ssmCode != ''">SSM_CODE,</if>
+        <if test="entity.nucleicTime != null and entity.nucleicTime != ''">NUCLEIC_TIME,</if>
+        <if test="entity.nucleicCode != null and entity.nucleicCode != ''">NUCLEIC_CODE,</if>
+        <if test="entity.nucleiTerm != null">NUCLEI_TERM,</if>
+        <if test="entity.antigenTime != null and entity.antigenTime != ''">ANTIGEN_TIME,</if>
+        <if test="entity.antigenCode != null and entity.antigenCode != ''">ANTIGEN_CODE,</if>
+        <if test="entity.antigenTerm != null">ANTIGEN_TERM,</if>
+        <if test="entity.temperature != null">TEMPERATURE,</if>
+        <if test="entity.temperatureThreshold != null">TEMPERATURE_THRESHOLD,</if>
+        <if test="entity.DATA_ID != null">DATA_ID</if>
+        )values(
+        <if test="entity.JH_OPER_TYPE != null and entity.JH_OPER_TYPE != ''">#{entity.JH_OPER_TYPE},</if>
+        <if test="entity.JH_OPER_TIME != null">#{entity.JH_OPER_TIME},</if>
+        <if test="entity.pId != null and entity.pId != ''">#{entity.pId},</if>
+        <if test="entity.serialNo != null">#{entity.serialNo},</if>
+        <if test="entity.account != null and entity.account != ''">#{entity.account},</if>
+        <if test="entity.sceneAccount != null and entity.sceneAccount != ''">#{entity.sceneAccount},</if>
+        <if test="entity.deviceId != null and entity.deviceId != ''">#{entity.deviceId},</if>
+        <if test="entity.checkTime != null and entity.checkTime != ''">#{entity.checkTime},</if>
+        <if test="entity.name != null and entity.name != ''">#{entity.name},</if>
+        <if test="entity.idNumber != null and entity.idNumber != ''">#{entity.idNumber},</if>
+        <if test="entity.ssmCode != null and entity.ssmCode != ''">#{entity.ssmCode},</if>
+        <if test="entity.nucleicTime != null and entity.nucleicTime != ''">#{entity.nucleicTime},</if>
+        <if test="entity.nucleicCode != null and entity.nucleicCode != ''">#{entity.nucleicCode},</if>
+        <if test="entity.nucleiTerm != null">#{entity.nucleiTerm},</if>
+        <if test="entity.antigenTime != null and entity.antigenTime != ''">#{entity.antigenTime},</if>
+        <if test="entity.antigenCode != null and entity.antigenCode != ''">#{entity.antigenCode},</if>
+        <if test="entity.antigenTerm != null">#{entity.antigenTerm},</if>
+        <if test="entity.temperature != null">#{entity.temperature},</if>
+        <if test="entity.temperatureThreshold != null">#{entity.temperatureThreshold},</if>
+         <if test="entity.DATA_ID != null">#{entity.DATA_ID}</if>
+        )
+    </insert>
+
+    <select id="getDmLimit" resultType="int">
+        SELECT DATA_ID FROM DIGITAL_SENTRY order by DATA_ID DESC LIMIT 1
+    </select>
+
+
+</mapper>
